@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="fitec.dba.metier.Livre" table="livre" catalog="fitec">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="titre" type="string">
+            <column name="titre" not-null="true" />
+        </property>
+        <property name="nbPages" type="integer">
+            <column name="nb_pages" />
+        </property>
+        <property name="prix" type="float">
+            <column name="prix" />
+        </property>
+        
+        <many-to-one name="editeur" class="fitec.dba.metier.Editeur"
+        column="id_editeur"
+        not-null="true"/>
+        
+        <many-to-one name="auteur" class="fitec.dba.metier.Auteur"
+        column="id_auteur"
+        not-null="true"/>
+        
+    </class>
+</hibernate-mapping>
